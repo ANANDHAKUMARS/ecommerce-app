@@ -53,4 +53,11 @@ public class ListProductsRequest {
 	public void setProductIds(Set<String> productIds) {
 		this.productIds = productIds;
 	}
+
+	@Override
+	public String toString() {
+		return "ListProductsRequest [productIds=" + productIds + ", search=" + search + ", skip=" + skip + ", limit="
+				+ limit + "]";
+	}
+
 }

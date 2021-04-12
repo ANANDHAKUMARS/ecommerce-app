@@ -23,8 +23,9 @@ public class PromotionsRepository {
 	private MongoTemplate mongoTemplate;
 
 	public List<Promotion> listPromotions(Set<String> productIds) {
-		Query query = Query.query(Criteria.where("promotionType").in(PromotionType.values()))
-				.addCriteria(Criteria.where("productId").in(productIds));
+		Query query = Query.query(new Criteria().andOperator(
+						Criteria.where("type").in(PromotionType.PRODUCT.name(), PromotionType.TOTAL_AMOUNT.name()),
+						Criteria.where("productId").in(productIds)));
 		return mongoTemplate.find(query, Promotion.class);
 	}
 

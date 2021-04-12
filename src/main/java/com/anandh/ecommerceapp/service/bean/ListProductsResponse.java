@@ -34,4 +34,10 @@ public class ListProductsResponse {
 	public void setRequest(ListProductsRequest request) {
 		this.request = request;
 	}
+
+	@Override
+	public String toString() {
+		return "ListProductsResponse [products=" + products + ", request=" + request + "]";
+	}
+
 }

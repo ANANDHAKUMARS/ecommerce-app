@@ -17,4 +17,10 @@ public class SaveCartProductRequest {
 	public void setProduct(CartProduct product) {
 		this.product = product;
 	}
+
+	@Override
+	public String toString() {
+		return "SaveCartProductRequest [product=" + product + "]";
+	}
+
 }

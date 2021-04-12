@@ -17,4 +17,9 @@ public class SaveProductRequest {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	@Override
+	public String toString() {
+		return "SaveProductRequest [product=" + product + "]";
+	}
 }

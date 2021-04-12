@@ -15,4 +15,9 @@ public class ListCartProductsRequest extends ListProductsRequest {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+	@Override
+	public String toString() {
+		return "ListCartProductsRequest [userId=" + userId + ", ListProductsRequest=" + super.toString() + "]";
+	}
 }

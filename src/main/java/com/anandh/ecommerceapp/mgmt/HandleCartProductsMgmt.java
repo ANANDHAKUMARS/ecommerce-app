@@ -13,6 +13,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleScriptContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,7 @@ import com.anandh.ecommerceapp.service.bean.ListProductsRequest;
  */
 @Service
 public class HandleCartProductsMgmt {
+	private static final Logger LOGGER = LoggerFactory.getLogger(HandleCartProductsMgmt.class);
 	private static final String DISCOUNTED_AMOUNT = "discountedAmount";
 	private static final String DISCOUNT = "discount";
 	private static final String TOTAL_AMOUNT = "totalAmount";
@@ -47,14 +50,17 @@ public class HandleCartProductsMgmt {
 	}
 
 	public static void init() {
+		LOGGER.info("script engine init started");
 		ScriptEngineManager factory = new ScriptEngineManager();
 		engine = factory.getEngineByName("nashorn");
 
 		context = new SimpleScriptContext();
 		context.setBindings(engine.createBindings(), ScriptContext.ENGINE_SCOPE);
+		LOGGER.info("script engine init completed");
 	}
 
 	public ListCartProductsResponse calculateCartProductAmounts(List<CartProduct> cartProducts) throws Exception {
+		LOGGER.info("calculateCartProductAmounts method started");
 		Map<String, CartProduct> cartProductIdAndProductMapping = cartProducts.stream()
 				.collect(Collectors.toMap(CartProduct::getProductId, product -> product));
 
@@ -69,7 +75,10 @@ public class HandleCartProductsMgmt {
 		List<CartProduct> promotionAppliedCart = applyProductPromotions(cartProducts, cartProductIdAndProductMapping,
 				productIdAndProductMapping, cartProductsWithActualAmounts, productIdPromotionsMapping);
 
-		return applyTotalAmountPromotions(cartProducts, totalAmountPromotions, promotionAppliedCart);
+		ListCartProductsResponse response = applyTotalAmountPromotions(cartProducts, totalAmountPromotions,
+				promotionAppliedCart);
+		LOGGER.info("calculateCartProductAmounts method completed");
+		return response;
 	}
 
 	private Map<String, Product> getCartAddedProducts(Map<String, CartProduct> cartProductIdAndProductMapping) {

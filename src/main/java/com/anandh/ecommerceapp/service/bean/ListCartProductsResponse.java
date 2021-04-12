@@ -51,10 +51,17 @@ public class ListCartProductsResponse {
 	}
 
 	public double getTotalDiscountedAmount() {
-		return totalDiscountedAmount;
+		return totalDiscountedAmount == 0 ? totalAmount : totalDiscountedAmount;
 	}
 
 	public void setTotalDiscountedAmount(double totalDiscountedAmount) {
 		this.totalDiscountedAmount = totalDiscountedAmount;
 	}
+
+	@Override
+	public String toString() {
+		return "ListCartProductsResponse [products=" + products + ", totalAmount=" + totalAmount + ", discount="
+				+ discount + ", totalDiscountedAmount=" + totalDiscountedAmount + "]";
+	}
+
 }

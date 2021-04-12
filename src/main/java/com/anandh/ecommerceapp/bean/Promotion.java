@@ -50,4 +50,8 @@ public class Promotion {
 		this.rules = rules;
 	}
 
+	@Override
+	public String toString() {
+		return "Promotion [id=" + id + ", name=" + name + ", type=" + type + ", productId=" + productId + "]";
+	}
 }
