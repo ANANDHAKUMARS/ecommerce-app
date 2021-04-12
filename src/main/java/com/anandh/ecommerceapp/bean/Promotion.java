@@ -1,5 +1,7 @@
 package com.anandh.ecommerceapp.bean;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,9 +10,9 @@ public class Promotion {
 	@Id
 	private String id;
 	private String name;
-	private PromotionType promotionType;
+	private PromotionType type;
 	private String productId;
-	private String rule;
+	private List<String> rules;
 
 	public String getId() {
 		return id;
@@ -26,12 +28,12 @@ public class Promotion {
 		this.name = name;
 	}
 
-	public PromotionType getPromotionType() {
-		return promotionType;
+	public PromotionType getType() {
+		return type;
 	}
 
-	public void setPromotionType(PromotionType promotionType) {
-		this.promotionType = promotionType;
+	public void setType(PromotionType type) {
+		this.type = type;
 	}
 
 	public String getProductId() {
@@ -41,11 +43,11 @@ public class Promotion {
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
-	public String getRule() {
-		return rule;
+	public List<String> getRules() {
+		return rules;
 	}
-	public void setRule(String rule) {
-		this.rule = rule;
+	public void setRules(List<String> rules) {
+		this.rules = rules;
 	}
 
 }

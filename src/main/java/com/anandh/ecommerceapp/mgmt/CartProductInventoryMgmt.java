@@ -21,11 +21,11 @@ public class CartProductInventoryMgmt {
 	@Autowired
 	private CartProductInventoryRepository cartProductInventoryRepository;
 	@Autowired
-	private ApplyPromotionsMgmt promotionsMgmt;
+	private HandleCartProductsMgmt handleCartMgmt;
 
 	public ListCartProductsResponse listProducts(ListCartProductsRequest request) throws Exception {
 		List<CartProduct> products = cartProductInventoryRepository.listProducts(request);
-		return promotionsMgmt.applyPromotions(products);
+		return handleCartMgmt.calculateCartProductAmounts(products);
 	}
 
 	public void save(CartProduct product) {

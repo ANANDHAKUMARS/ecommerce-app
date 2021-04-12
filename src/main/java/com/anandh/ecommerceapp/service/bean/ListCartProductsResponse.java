@@ -12,9 +12,12 @@ import com.anandh.ecommerceapp.bean.CartProduct;
 public class ListCartProductsResponse {
 	private List<CartProduct> products;
 	private double totalAmount;
+	private double discount;
+	private double totalDiscountedAmount;
 
 	public ListCartProductsResponse(List<CartProduct> products, double totalAmount) {
 		super();
+		this.discount = 0;
 		this.products = products;
 		this.totalAmount = totalAmount;
 	}
@@ -33,5 +36,25 @@ public class ListCartProductsResponse {
 
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public void addDiscount(double discount) {
+		this.discount += discount;
+	}
+
+	public double getTotalDiscountedAmount() {
+		return totalDiscountedAmount;
+	}
+
+	public void setTotalDiscountedAmount(double totalDiscountedAmount) {
+		this.totalDiscountedAmount = totalDiscountedAmount;
 	}
 }

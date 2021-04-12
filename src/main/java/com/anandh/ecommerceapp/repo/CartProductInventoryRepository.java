@@ -24,10 +24,10 @@ public class CartProductInventoryRepository {
 
 	public List<CartProduct> listProducts(ListCartProductsRequest request) {
 		Query query = new Query();
-		if (request.getUserId() != null && request.getUserId().isEmpty()) {
+		if (request.getUserId() != null && !request.getUserId().isEmpty()) {
 			query.addCriteria(Criteria.where("userId").is(request.getUserId()));
 		}
-		if (request.getSearch() != null && request.getSearch().isEmpty()) {
+		if (request.getSearch() != null && !request.getSearch().isEmpty()) {
 			query.addCriteria(Criteria.where("name").regex(request.getSearch()));
 		}
 		return mongoTemplate.find(query.skip(request.getSkip()).limit(request.getLimit()), CartProduct.class);

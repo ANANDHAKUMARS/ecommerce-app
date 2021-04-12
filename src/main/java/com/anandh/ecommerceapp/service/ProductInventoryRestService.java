@@ -26,24 +26,24 @@ public class ProductInventoryRestService {
 	@Autowired
 	private ProductInventoryMgmt productInventoryMgmt;
 
-	@PostMapping(consumes = "application/json", produces = "application/json")
-	public ListProductsResponse listProducts(ListProductsRequest request) {
+	@PostMapping(path = "/list", consumes = "application/json", produces = "application/json")
+	public ListProductsResponse listProducts(@RequestBody ListProductsRequest request) {
 		return productInventoryMgmt.listProducts(request);
 	}
 
-	@PostMapping(consumes = "application/json", produces = "application/json")
-	public boolean saveProduct(@RequestBody SaveProductRequest product) {
-		productInventoryMgmt.save(product);
+	@PostMapping(path = "/save", consumes = "application/json", produces = "application/json")
+	public boolean saveProduct(@RequestBody SaveProductRequest request) {
+		productInventoryMgmt.save(request.getProduct());
 		return true;
 	}
 
-	@DeleteMapping("/{productId}")
+	@DeleteMapping("/delete/{productId}")
 	public String deleteProduct(@PathVariable String productId) {
 		productInventoryMgmt.deleteById(productId);
 		return productId;
 	}
 
-	@GetMapping("/{productId}")
+	@GetMapping("/get/{productId}")
 	public Product getProductById(@PathVariable String productId) {
 		return productInventoryMgmt.getProductById(productId);
 	}

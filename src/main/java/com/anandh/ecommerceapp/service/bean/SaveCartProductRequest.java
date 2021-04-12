@@ -7,6 +7,14 @@ import com.anandh.ecommerceapp.bean.CartProduct;
  * @author anandhakumar.s
  *
  */
-public class SaveCartProductRequest extends CartProduct {
+public class SaveCartProductRequest {
+	private CartProduct product;
 
+	public CartProduct getProduct() {
+		return product;
+	}
+
+	public void setProduct(CartProduct product) {
+		this.product = product;
+	}
 }
