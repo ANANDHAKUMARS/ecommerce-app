@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.anandh</groupId>
-	<artifactId>ecommercecart</artifactId>
+	<artifactId>ecommerceapp</artifactId>
 	<version>1.0.0</version>
 	<name>ecommercecart</name>
-	<description>Ecommerce cart</description>
+	<description>Ecommerce app</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -33,6 +33,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 
